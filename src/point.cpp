@@ -7,6 +7,7 @@
 
 #define GRAVITY 9.81
 #define AIR_DENSITY 1.225
+#define NUM_POINTS 50
 
 
 class Point {
@@ -103,7 +104,7 @@ int main() {
 
   std::vector<Point> points;
   std::cout << "created vector<Point>" << std::endl;
-  for (int i = 0; i < 50; i+=1) {
+  for (int i = 0; i < NUM_POINTS; i+=1) {
     std::cout << "before push_back to vector<Point>, i:" << i << std::endl;
     points.push_back(Point{400+i, 0});
     std::cout << "pushed to vector<Point>" << std::endl;
