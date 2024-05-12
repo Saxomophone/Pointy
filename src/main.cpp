@@ -63,19 +63,17 @@ class Square {
     }
 
     void update(int floorY) {
-      velocity += accelerationY(shape) * dt;
-      std::cout << "Velocity: " << velocity << std::endl;
+      velocity += accelerationY(shape) * dt;  
 
-      if (y >= floorY) {
+      if (y + size >= floorY) {
         y = floorY;
         velocity = 0;
         y = floorY - size;
         state = ObjectState::OnFloor;
       } else {
         state = ObjectState::InAir;
+        y += velocity;
       }
-
-      y += velocity;
     }
 };
 
@@ -164,7 +162,7 @@ int main() {
         //draw floor        
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         int floorY = window_height - 20;
-        SDL_RenderFillRect(renderer, new SDL_Rect{0, floorY, window_width, 10});
+        SDL_RenderFillRect(renderer, new SDL_Rect{0, floorY, window_width, 20}); 
 
         SDL_SetRenderDrawColor(renderer, 255, 20, 20, 255);
         object.update(floorY);
